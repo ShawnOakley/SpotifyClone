@@ -33,6 +33,14 @@ if (isset($_POST['registerButton'])) {
     $registerPassword = sanitizeFormPassword($_POST['registerPassword']);
 
     $registerPassword2 = sanitizeFormPassword($_POST['registerPassword2']);    
+
+    $account = new Account($username, $firstName, $lastName, $email, $email2, $registerPassword, $registerPassword2);
+
+    $wasSuccessful = $account->($username, $firstName, $lastName, $email, $email2, $password, $password2);
+
+    if($wasSuccessful == true) {
+        header("Location: index.php");
+    }
 }
 
 ?>
